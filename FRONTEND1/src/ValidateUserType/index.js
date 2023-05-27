@@ -1,3 +1,3 @@
 export const validateUserType=()=>{
-    return localStorage.getItem("loginType")==="Company"
+    return localStorage.getItem("roleType")==="User"
 }
