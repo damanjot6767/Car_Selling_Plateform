@@ -56,3 +56,8 @@ export const fetchUserProfile =()=>API.get(`user/fetchUser`)
 export const editUserProfile =(data)=>API.put(`user/editUser`,data)
 export const userBuyCar =(data)=>API.post(`user/buyCar`, data)
 export const userFilterCar =(data)=>API.post(`user/filterCar`, data)
+
+//------------------------------------------------------------------------------------------------------Species Api
+
+export const fetchSpecies =()=>API.get(`species/fetchSpecies`)
+export const filterSpecies =({name,year})=>API.get(`species/filterSpecies?name=${name}&year=${year}`)
