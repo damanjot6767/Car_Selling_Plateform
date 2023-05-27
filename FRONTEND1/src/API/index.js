@@ -46,7 +46,7 @@ export const editDealerProfile =(data)=>API.put("dealer/editDealer", data)
 //------------------------------------------------------------------------------------------------------Dealer Car Api
 export const addDealerCar =(data)=>API.post("dealer/createCar", data)
 export const fetchAllCars =()=>API.get("dealer/fetchCars")
-export const deleteClient =(carId)=>API.delete(`dealer/deleteCars/${carId}`)
+export const deleteCar =(carId)=>API.delete(`dealer/deleteCars/${carId}`)
 export const editCar =(carId, data)=>API.put(`dealer/editCar/${carId}`, data)
 export const fetchCarById =(carId)=>API.get(`dealer/fetchCar/${carId}`)
 
@@ -56,6 +56,7 @@ export const fetchUserProfile =()=>API.get(`user/fetchUser`)
 export const editUserProfile =(data)=>API.put(`user/editUser`,data)
 export const userBuyCar =(data)=>API.post(`user/buyCar`, data)
 export const userFilterCar =(data)=>API.post(`user/filterCar`, data)
+export const AllCars =()=>API.get("user/fetchCars")
 
 //------------------------------------------------------------------------------------------------------Species Api
 

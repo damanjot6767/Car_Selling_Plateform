@@ -11,6 +11,13 @@ const initialState = {
 
 export const dealer = (state = initialState, action) =>{
     switch(action.type){
+        case ACTION_TYPES.DEALER_REGISTER_REQUEST:
+            return {...state,  loader:true}
+        case ACTION_TYPES.DEALER_REGISTER_SUCCESS:
+            return {...state, dealer:{}, isLoggedIn:true, loader:false}
+        case ACTION_TYPES.DEALER_REGISTER_FAILED:
+            return {...state, loader:false}
+
         case ACTION_TYPES.DEALER_LOGIN_REQUEST:
             return {...state,  loader:true}
         case ACTION_TYPES.DEALER_LOGIN_SUCCESS:
@@ -71,6 +78,26 @@ export const dealer = (state = initialState, action) =>{
             return {...state, Cars: action.payload,loader:false}
         case ACTION_TYPES.FETCH_ALL_CAR_FAILED:
             return {...state, loader:false}
+
+        case ACTION_TYPES.ADD_DEALER_CAR_REQUEST:
+            return {...state, loader:true}
+        case ACTION_TYPES.ADD_DEALER_CAR_SUCCESS:
+            return {...state,loader:false}
+        case ACTION_TYPES.ADD_DEALER_CAR_FAILED:
+            return {...state, loader:false}
+
+        case ACTION_TYPES. DELETE_DEALER_CAR_REQUEST:
+            return {...state, loader:true}
+        case ACTION_TYPES. DELETE_DEALER_CAR_SUCCESS:
+            return {...state,loader:false}
+        case ACTION_TYPES. DELETE_DEALER_CAR_FAILED:
+            return {...state, loader:false}
+
+        case ACTION_TYPES. EDIT_DEALER_CAR_REQUEST:
+            return {...state, loader:true}
+        case ACTION_TYPES. EDIT_DEALER_CAR_SUCCESS:
+            return {...state,loader:false}
+        case ACTION_TYPES. EDIT_DEALER_CAR_FAILED:
         default:
             return state
     }

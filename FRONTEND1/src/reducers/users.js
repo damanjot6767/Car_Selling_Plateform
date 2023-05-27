@@ -9,6 +9,14 @@ const initialState = {
 
 export const user = (state = initialState, action) =>{
     switch(action.type){
+
+        case ACTION_TYPES.USER_REGISTER_REQUEST:
+            return {...state,  loader:true}
+        case ACTION_TYPES.USER_REGISTER_SUCCESS:
+            return {...state, user:{}, isLoggedIn:true, loader:false}
+        case ACTION_TYPES.USER_REGISTER_FAILED:
+            return {...state, loader:false}
+
         case ACTION_TYPES.USER_LOGIN_REQUEST:
             return {...state,  loader:true}
         case ACTION_TYPES.USER_LOGIN_SUCCESS:
