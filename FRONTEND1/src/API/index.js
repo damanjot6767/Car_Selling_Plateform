@@ -5,6 +5,7 @@ const API = axios.create({
     baseURL: process.env.REACT_APP_API_BASE_URL,
 });
 
+console.log( process.env.REACT_APP_API_BASE_URL)
 API.interceptors.request.use((req) => {
   try {
     if (JSON.parse(localStorage.getItem("profile")).token) {

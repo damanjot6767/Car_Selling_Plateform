@@ -7,7 +7,7 @@ const initialState = {
     Cars:[],
 }
 
-export const user = (state = initialState, action) =>{
+export const users = (state = initialState, action) =>{
     switch(action.type){
 
         case ACTION_TYPES.USER_REGISTER_REQUEST:

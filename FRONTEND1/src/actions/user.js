@@ -1,16 +1,16 @@
 import { ACTION_TYPES } from "../constants/actionTypes";
 import { NotificationManager } from 'react-notifications';
 import localStorage from "redux-persist/es/storage";
-import { AllCars, editUserProfile,fetchUserProfile, resetPassword, userBuyCar, userFilterCar } from "../API";
+import { AllCars, editUserProfile,fetchUserProfile, login, register, resetPassword, userBuyCar, userFilterCar } from "../API";
 
 export const userSignup = (res, navigate)=> async(dispatch, getState)=>{
     try{
         dispatch({type:ACTION_TYPES.USER_REGISTER_REQUEST})
-        localStorage.setItem("roleType","user")
+        localStorage.setItem("roleType",res.role)
         const response = await register(res)
         dispatch({type:ACTION_TYPES.USER_REGISTER_SUCCESS, payload: {}})
         NotificationManager.success("Registration Success, please login now!")
-        navigate("/login")
+        navigate("/")
     }
     catch(err){
         console.log(err);
@@ -22,7 +22,7 @@ export const userSignup = (res, navigate)=> async(dispatch, getState)=>{
 export const userLogin = (res, navigate)=> async(dispatch, getState)=>{
     try{
         dispatch({type:ACTION_TYPES.USER_LOGIN_REQUEST})
-        localStorage.setItem("roleType","user")
+        localStorage.setItem("roleType",res.role)
         const {data} = await login(res)
         dispatch({type:ACTION_TYPES.USER_LOGIN_SUCCESS, payload: data.data})
         NotificationManager.success("Login Success")
@@ -36,11 +36,12 @@ export const userLogin = (res, navigate)=> async(dispatch, getState)=>{
 }
 
 
-export const userLogout =()=>async(dispatch, getState)=>{
+export const userLogout =(navigate)=>async(dispatch, getState)=>{
     try{
         dispatch({type: ACTION_TYPES.USER_LOGOUT_REQUEST})
         dispatch({type:ACTION_TYPES.USER_LOGOUT_SUCCESS, payload: {}})
         NotificationManager.success("Logout Success")
+        navigate("/signup")
     }
     catch(err){
         console.log(err.message);

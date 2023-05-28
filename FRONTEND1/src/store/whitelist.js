@@ -1,1 +1,1 @@
-export default ['dealer', 'user','species']
+export default ['dealers', 'users','species']

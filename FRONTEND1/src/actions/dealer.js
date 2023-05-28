@@ -1,16 +1,16 @@
 import { ACTION_TYPES } from "../constants/actionTypes";
 import { NotificationManager } from 'react-notifications';
 import localStorage from "redux-persist/es/storage";
-import { addDealerCar, deleteCar, editDealerProfile, fetchAllCars, fetchDealerProfile, login, register, resetPassword } from "../API";
+import { addDealerCar, deleteCar, editCar, editDealerProfile, fetchAllCars, fetchDealerProfile, login, register, resetPassword } from "../API";
 
 export const dealerSignup = (res, navigate)=> async(dispatch, getState)=>{
     try{
         dispatch({type:ACTION_TYPES.DEALER_REGISTER_REQUEST})
-        localStorage.setItem("roleType","dealer")
+        localStorage.setItem("roleType",res.role)
         const response = await register(res)
         dispatch({type:ACTION_TYPES.DEALER_REGISTER_SUCCESS, payload: {}})
         NotificationManager.success("Registration Success, please login now!")
-        navigate("/login")
+        navigate("/")
     }
     catch(err){
         console.log(err);
@@ -22,7 +22,7 @@ export const dealerSignup = (res, navigate)=> async(dispatch, getState)=>{
 export const dealerLogin = (res, navigate)=> async(dispatch, getState)=>{
     try{
         dispatch({type:ACTION_TYPES.DEALER_LOGIN_REQUEST})
-        localStorage.setItem("roleType","dealer")
+        localStorage.setItem("roleType",res.role)
         const {data} = await login(res)
         dispatch({type:ACTION_TYPES.DEALER_LOGIN_SUCCESS, payload: data.data})
         NotificationManager.success("Login Success")
@@ -36,11 +36,12 @@ export const dealerLogin = (res, navigate)=> async(dispatch, getState)=>{
 }
 
 
-export const dealerLogout =()=>async(dispatch, getState)=>{
+export const dealerLogout =(navigate)=>async(dispatch, getState)=>{
     try{
         dispatch({type: ACTION_TYPES.DEALER_LOGOUT_REQUEST})
         dispatch({type:ACTION_TYPES.DEALER_LOGOUT_SUCCESS, payload: {}})
         NotificationManager.success("Logout Success")
+        navigate("/signup")
     }
     catch(err){
         console.log(err.message);

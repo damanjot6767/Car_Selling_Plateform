@@ -9,7 +9,7 @@ const initialState = {
     Car:{}
 }
 
-export const dealer = (state = initialState, action) =>{
+export const dealers = (state = initialState, action) =>{
     switch(action.type){
         case ACTION_TYPES.DEALER_REGISTER_REQUEST:
             return {...state,  loader:true}
