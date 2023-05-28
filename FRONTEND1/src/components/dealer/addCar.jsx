@@ -11,7 +11,8 @@ import {
   styled,
 } from "@mui/material";
 import { Span } from "../Typography";
-import { useEffect, useState } from "react";import { TextValidator, ValidatorForm } from "react-material-ui-form-validator";
+import { useEffect, useState } from "react";
+import { TextValidator, ValidatorForm } from "react-material-ui-form-validator";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllCars } from "../../actions/dealer";
 import { getSpecies } from "../../actions/species";
